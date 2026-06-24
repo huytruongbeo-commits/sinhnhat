@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ HAPPY BIRTHDAY NGỌC ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght=500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { 
+            box-sizing: border-box; 
+            font-family: 'Quicksand', sans-serif;
+        }
+        body {
+            margin: 0; padding: 0;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #2c1103 0%, #0b0401 70%, #000000 100%);
+            overflow-y: auto; overflow-x: hidden; position: relative;
+        }
+
+        /* ---------------- MÀN HÌNH 0: KIỂM TRA NHÂN PHẨM ---------------- */
+        .quiz-container {
+            background: rgba(25, 15, 10, 0.65); backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 152, 0, 0.4); border-radius: 24px;
+            padding: 40px 25px; text-align: center; max-width: 460px; width: 92%;
+            box-shadow: 0 20px 50px rgba(255, 152, 0, 0.2);
+            z-index: 5000; animation: modalPop 0.5s ease forwards;
+        }
+        .quiz-title {
+            color: #ffd54f; font-size: 22px; font-weight: 700; line-height: 1.6; margin-bottom: 35px;
+        }
+        .quiz-btn-zone {
+            display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 80px; position: relative;
+        }
+
+        /* ---------------- POP-UP TROLL GLASSMORPHISM ---------------- */
+        .troll-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center;
+            z-index: 2000; padding: 20px;
+        }
+        .troll-modal-box {
+            background: rgba(25, 15, 10, 0.65); backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 87, 34, 0.4); border-radius: 24px;
+            padding: 40px 30px; text-align: center; max-width: 440px; width: 100%;
+            box-shadow: 0 20px 50px rgba(255, 87, 34, 0.3), inset 0 0 20px rgba(255, 87, 34, 0.1);
+            animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes modalPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .troll-title {
+            color: #ffb74d; font-size: 24px; font-weight: 700; line-height: 1.6;
+            margin-bottom: 35px; text-shadow: 0 2px 10px rgba(255, 183, 77, 0.4);
+        }
+        .troll-btn-zone {
+            display: flex; justify-content: center; align-items: center;
+            gap: 25px; flex-wrap: wrap; min-height: 110px;
+        }
+        .troll-btn {
+            padding: 14px 35px; font-size: 16px; font-weight: 700; border: none;
+            border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            letter-spacing: 1px;
+        }
+        .btn-yes {
+            background: linear-gradient(135deg, #ff5722, #ff9800); color: #fff;
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4); transform-origin: center;
+        }
+        .btn-yes:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(255, 87, 34, 0.6); }
+        .btn-no { background: rgba(255, 255, 255, 0.1); color: #e0e0e0; border: 1px solid rgba(255, 255, 255, 0.2); transition: position 0.1s ease; }
+
+        /* ---------------- MÀN HÌNH HACK GIẢ LẬP (FAKE HACK SCREEN) ---------------- */
+        .fake-hack-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #00040a; color: #00ff66; z-index: 9999;
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+            font-family: 'Courier New', Courier, monospace; padding: 20px; text-align: center;
+        }
+        .hack-loader {
+            border: 4px solid #112233; border-top: 4px solid #00ff66; border-radius: 50%;
+            width: 70px; height: 70px; animation: spin 1s linear infinite; margin-bottom: 25px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hack-text { font-size: 18px; font-weight: bold; letter-spacing: 1px; line-height: 1.8; }
+
+        /* Rung lắc màn hình */
+        .flash-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; opacity: 0; pointer-events: none; z-index: 9998; }
+        .flash-active { animation: screenFlashEffect 0.6s ease-out forwards; }
+        @keyframes screenFlashEffect { 0% { opacity: 1; } 100% { opacity: 0; } }
+        .screen-shake { animation: shake 0.4s ease-in-out; }
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0); }
+            10%, 30%, 50%, 70%, 90% { transform: translate(-6px, 5px); }
+            20%, 40%, 60%, 80% { transform: translate(6px, -5px); }
+        }
+
+        /* ---------------- MÀN HÌNH 1: CHIẾC HỘP BÍ ẨN ---------------- */
+        .box-container { display: none; text-align: center; cursor: pointer; z-index: 10; }
+        .mystery-box {
+            font-size: 150px; display: inline-block;
+            filter: drop-shadow(0 10px 20px rgba(255,87,34,0.3));
+            animation: pulseGlowing 1.2s infinite alternate ease-in-out;
+            user-select: none; transition: transform 0.1s ease;
+        }
+        .box-container:active .mystery-box { transform: scale(0.9) rotate(-5deg); }
+        @keyframes pulseGlowing {
+            0% { transform: scale(1); filter: drop-shadow(0 10px 20px rgba(255,87,34,0.4)); }
+            100% { transform: scale(1.08) rotate(3deg); filter: drop-shadow(0 20px 40px rgba(255,0,0,0.5)); }
+        }
+        .warning-text {
+            color: #ffb74d; font-size: 15px; font-weight: 700; margin-top: 30px;
+            padding: 12px 24px; background: rgba(255, 87, 34, 0.1); border-radius: 50px;
+            border: 1px solid rgba(255, 87, 34, 0.2); display: inline-block; letter-spacing: 1.5px;
+        }
+
+        /* ---------------- MÀN HÌNH 2: KHUNG VIỀN CHÍNH ---------------- */
+        .outer-frame {
+            display: none; position: relative; padding: 12px; border-radius: 36px;
+            background: linear-gradient(135deg, #ff5722, #ffcc00, #ff0055);
+            box-shadow: 0 30px 70px rgba(255, 69, 0, 0.4); max-width: 540px; width: 92%; margin: 30px 0; z-index: 5;
+        }
+        .card-container { background: #120c08; border-radius: 26px; padding: 35px 25px; text-align: center; color: #fff; }
+        .glitch-title {
+            font-size: 26px; font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 2px; margin-bottom: 25px;
+            background: linear-gradient(90deg, #ffe082, #fff, #ffe082); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .birthday-video { width: 100%; max-height: 250px; border-radius: 18px; border: 2px solid rgba(255, 255, 255, 0.1); box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 25px; object-fit: cover; }
+
+        /* ---------------- KHU VỰC BÁNH KEM & NẾN TƯƠNG TÁC ---------------- */
+        .cake-game-container {
+            position: relative; width: 100%; height: 320px; margin: 15px auto;
+            background: rgba(25, 18, 14, 0.6); border-radius: 20px; border: 2px dashed rgba(255, 204, 0, 0.25); overflow: hidden; touch-action: none;
+        }
+        
+        .candles-zone {
+            position: absolute; top: 18%; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 20px; z-index: 100; pointer-events: auto;
+        }
+        .candle {
+            font-size: 38px; cursor: pointer; user-select: none; transition: transform 0.2s, opacity 0.5s;
+            filter: drop-shadow(0 0 8px #ffaa00);
+        }
+        .candle:hover { transform: scale(1.2); }
+        .candle.blown { opacity: 0; transform: translateY(-15px) scale(0.5); pointer-events: none; }
+
+        .cake-wrapper {
+            position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%);
+            width: 240px; height: 240px; cursor: pointer; user-select: none;
+        }
+        .cake-half {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            font-size: 160px; line-height: 240px; text-align: center;
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 10px 25px rgba(255, 100, 0, 0.4));
+        }
+        .cake-half.left { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
+        .cake-half.right { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
+        .cake-wrapper.is-cut .cake-half.left { transform: translateX(-90px) rotate(-15deg); }
+        .cake-wrapper.is-cut .cake-half.right { transform: translateX(90px) rotate(15deg); }
+
+        .cake-tips {
+            position: absolute; bottom: 15px; width: 100%; text-align: center;
+            color: #ffd54f; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); pointer-events: none; z-index: 10;
+        }
+        .laser-line { position: absolute; background: linear-gradient(90deg, transparent, #fff, #ff5722, transparent); height: 5px; box-shadow: 0 0 20px #ff5722; pointer-events: none; transform-origin: left center; opacity: 0; z-index: 99; }
+        
+        .crumb-particle { position: absolute; pointer-events: none; font-size: 24px; z-index: 98; animation: explodeCrumb 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards; }
+        @keyframes explodeCrumb { 0% { transform: translate(var(--sx), var(--sy)) scale(1); opacity: 1; } 100% { transform: translate(var(--ex), var(--ey)) scale(0.2) rotate(360deg); opacity: 0; } }
+
+        /* ---------------- BAO THƯ XUẤT HIỆN ---------------- */
+        .envelope-box {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+            text-align: center; cursor: pointer; z-index: 120; opacity: 0; transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .envelope-box.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        .envelope-icon { font-size: 90px; filter: drop-shadow(0 10px 20px rgba(255, 204, 0, 0.5)); animation: bounceLetter 1s infinite alternate ease-in-out; }
+        @keyframes bounceLetter { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+        .envelope-tip { color: #00e676; font-size: 13px; font-weight: 700; margin-top: 8px; text-shadow: 0 2px 10px rgba(0, 230, 118, 0.4); text-transform: uppercase; }
+
+        /* ---------------- LÁ THƯ CHÚC MỪNG SANG TRỌNG ---------------- */
+        .letter-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 3000; padding: 20px;
+        }
+        .letter-paper {
+            background: #fbf8f3; color: #3e3229; padding: 35px; border-radius: 24px; max-width: 460px; width: 100%; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border-top: 8px solid #ffa726; text-align: left; animation: modalPop 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        }
+        .letter-paper h3 { margin-top: 0; color: #6d4c41; font-size: 26px; font-family: 'Dancing Script', cursive; border-bottom: 1px dashed #cfd8dc; padding-bottom: 12px; font-weight: 700; }
+        .letter-text { font-size: 16px; line-height: 1.8; min-height: 140px; white-space: pre-line; color: #4e342e; margin: 20px 0; font-weight: 500; }
+        .close-letter-btn { background: linear-gradient(135deg, #8d6e63, #5d4037); color: #fff; border: none; padding: 12px 28px; border-radius: 30px; font-weight: 700; cursor: pointer; float: right; transition: all 0.2s; }
+        .close-letter-btn:hover { transform: translateY(-2px); }
+
+        /* NÚT BÁO CÁO VÔ TRI */
+        .report-btn {
+            background: none; border: 1px dashed rgba(255,255,255,0.2); color: rgba(255,255,255,0.4);
+            padding: 6px 14px; font-size: 11px; border-radius: 20px; cursor: pointer;
+            margin-top: 15px; transition: all 0.2s; display: inline-block;
+        }
+        .report-btn:hover { background: rgba(255,0,0,0.2); color: #fff; border-color: red; }
+
+        /* HIỆU ỨNG CLICK BUNG TIM TOÀN MÀN HÌNH */
+        .click-burst { position: fixed; pointer-events: none; font-size: 24px; z-index: 99999; animation: burstAnimation 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        @keyframes burstAnimation {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+            100% { transform: translate(calc(-50% + var(--cx)), calc(-50% + var(--cy))) scale(1.3) rotate(var(--rot)); opacity: 0; }
+        }
+
+        .mouse-spark { position: fixed; pointer-events: none; font-size: 20px; z-index: 99997; animation: sparkFade 0.8s linear forwards; }
+        @keyframes sparkFade { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(var(--mx), var(--my)) scale(0.2); } }
+        .bottom-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 28px; margin-top: 25px; opacity: 0.8; }
+        .floating-item { position: absolute; bottom: -60px; pointer-events: none; z-index: 1; animation: floatUp 4.5s linear forwards; user-select: none; }
+        @keyframes floatUp { 0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; } 15% { opacity: 0.6; } 100% { transform: translateY(-110vh) translateX(var(--sway-x)) scale(var(--scale)); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <!-- MÀN HÌNH 0: KIỂM TRA NHÂN PHẨM CHÍNH CHỦ -->
+    <div class="quiz-container" id="quizSection">
+        <div class="quiz-title">🚨 HỆ THỐNG XÁC MINH DANH TÍNH:<br>Ai là người xinh đẹp, hiền thục, không hề cục súc nhất hôm nay? 🤔</div>
+        <div class="quiz-btn-zone">
+            <button class="troll-btn btn-yes" onclick="passQuiz()">Ngọc chứ ai! 🥰</button>
+            <button class="troll-btn btn-no" id="quizWrongBtn" onmouseover="runAwayWrongBtn()" onclick="runAwayWrongBtn()">Một ai đó khác 🙄</button>
+        </div>
+    </div>
+
+    <!-- KHUNG HỘP THOẠI POP-UP TROLL MÀN 1 -->
+    <div class="troll-modal-overlay" id="trollModal">
+        <div class="troll-modal-box">
+            <div class="troll-title" id="trollQuestion">Nhìn mặt đáng nghi lắm. Có chắc là muốn nhận quà không Ngọc? 🤨</div>
+            <div class="troll-btn-zone">
+                <button class="troll-btn btn-yes" id="btnYes" onclick="handleYesClick()">Có chứ!</button>
+                <button class="troll-btn btn-no" id="btnNo" onclick="handleNoClick()">Không nha</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÀN HÌNH HACK GIẢ LẬP (TROL NGHE CĂNG THẲNG) -->
+    <div class="fake-hack-overlay" id="hackScreen">
+        <div class="hack-loader"></div>
+        <div class="hack-text" id="hackProgress">
+            [HỆ THỐNG] ĐANG QUÉT THIẾT BỊ...<br>
+            ĐÃ PHÁT HIỆN TOKEN TÀI KHOẢN NGÂN HÀNG CỦA NGỌC...<br>
+            ĐANG TIẾN HÀNH RÚT HẾT TIỀN: 0%...
+        </div>
+    </div>
+
+    <!-- LÁ THƯ CHÚC SINH NHẬT -->
+    <div class="letter-modal-overlay" id="letterModal">
+        <div class="letter-paper">
+            <h3>✉️ Gửi Ngọc thân mến,</h3>
+            <div class="letter-text" id="typedWish"></div>
+            <button class="close-letter-btn" onclick="closeLetter()">Đóng thư</button>
+        </div>
+    </div>
+
+    <!-- HIỆU ỨNG CHỚP MÀN HÌNH -->
+    <div class="flash-overlay" id="flashScreen"></div>
+
+    <!-- MÀN HÌNH 1: CHIẾC HỘP BÍ ẨN (CLICK 3 LẦN MỚI CHO QUA) -->
+    <div class="box-container" id="boxSection" onclick="handleBoxClick()">
+        <div class="mystery-box" id="mainBox">📦</div>
+        <br>
+        <div class="warning-text" id="boxWarning">⚠️ CẤM NGỌC BẤM VÀO ĐÂY NHA... ⚠️</div>
+    </div>
+
+    <!-- MÀN HÌNH 2: THIỆP BÁNH KEM KHỔNG LỒ -->
+    <div class="outer-frame" id="frameSection">
+        <div class="card-container">
+            <div class="glitch-title">🎉 HAPPY BIRTHDAY NGỌC 🎉</div>
+            
+            <video class="birthday-video" id="giftVideo" controls loop playsinline>
+                <source src="assets/ngoc-sinh-nhat.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
+
+            <!-- KHU VỰC GAME BÁNH KEM -->
+            <div class="cake-game-container" id="gameZone">
+                <div class="laser-line" id="laser"></div>
+                
+                <!-- HỆ THỐNG 3 NGỌN NẾN CLICK ĐỂ THỔI -->
+                <div class="candles-zone" id="candlesZone">
+                    <div class="candle" onclick="blowCandle(this, event)">🕯️</div>
+                    <div class="candle" onclick="blowCandle(this, event)">🕯️</div>
+                    <div class="candle" onclick="blowCandle(this, event)">🕯️</div>
+                </div>
+
+                <!-- BAO THƯ ẨN -->
+                <div class="envelope-box" id="envelopeBox" onclick="openLetterModal()">
+                    <div class="envelope-icon">✉️</div>
+                    <div class="envelope-tip">Bấm vô đây nhận thư nè ba nớ</div>
+                </div>
+
+                <div class="cake-wrapper" id="cakeWrapper">
+                    <div class="cake-half left">🎂</div>
+                    <div class="cake-half right">🎂</div>
+                </div>
+                <div class="cake-tips" id="cakeTips">🔥 THỔI 3 NGỌN NẾN ĐI KHÔNG BÁNH KEM NÓ TỰ HUỶ BÂY GIỜ! 🔥</div>
+            </div>
+            
+            <div class="bottom-icons">🎈 🎁 🥰 ✨ 🎁 🎈</div>
+            <br>
+            <button class="report-btn" onclick="triggerReportTroll()">⚠️ Báo cáo trang web này quá nhảm nhí</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1; 
+        let yesButtonScale = 1;
+        let boxClicks = 0;
+        let blownCandlesCount = 0;
+        let canSliceCake = false; 
+        let interactiveSparksEnabled = false;
+
+        const pureWishText = "Chúc mừng sinh nhật Ngọc nhé!\n\nTuổi mới, chúc Ngọc luôn tràn ngập niềm vui, ngày càng xinh đẹp, tươi trẻ và luôn có thật nhiều sức khỏe. Mong rằng mọi dự định sắp tới và những ước mơ của Ngọc đều suôn sẻ, thuận lợi và sớm thành hiện thực.\n\nHy vọng tuổi mới sẽ mang đến cho Ngọc thật nhiều may mắn, hạnh phúc và luôn giữ được nụ cười tươi tắn trên môi nha. Sinh nhật thật vui vẻ và trọn vẹn bên những người thân yêu nhé!\n\nHappy Birthday! 🎉🎂✨\n\n-----------------------------\nP.S. Xem xong nhớ chuyển khoản tiền làm web bản Premium này nha, giá hữu nghị tình bạn bè 5 tỷ VNĐ chuyển khoản liền tay có ngay thiệp xịn! 😂💵";
+
+        // TROLL MÀN 0: NÚT CHẠY TRỐN
+        function runAwayWrongBtn() {
+            const btn = document.getElementById('quizWrongBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40) + 20;
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40) + 20;
+            btn.style.position = 'fixed';
+            btn.style.left = `${x}px`; btn.style.top = `${y}px`;
+            btn.style.zIndex = '9999';
+        }
+
+        function passQuiz() {
+            document.getElementById('quizSection').style.display = 'none';
+            document.getElementById('boxSection').style.display = 'block';
+        }
+
+        // TƯƠNG TÁC 1: CLICK HỘP QUÀ 3 LẦN MỚI MỞ
+        function handleBoxClick() {
+            boxClicks++;
+            const warning = document.getElementById('boxWarning');
+            document.body.classList.remove('screen-shake');
+            void document.body.offsetWidth; 
+            document.body.classList.add('screen-shake');
+
+            if (boxClicks === 1) {
+                warning.innerHTML = "⚡ Đã bảo cấm bấm rồi! Ấn tiếp 2 phát nữa xem nào?";
+            } else if (boxClicks === 2) {
+                warning.innerHTML = "🔥 Đủ bản lĩnh thì ấn thêm 1 phát chí mạng nữa coi!";
+            } else if (boxClicks >= 3) {
+                document.body.classList.remove('screen-shake');
+                openTrollModal();
+            }
+        }
+
+        function openTrollModal() {
+            document.getElementById('trollModal').style.display = 'flex';
+        }
+
+        function handleYesClick() {
+            if (currentStep === 1) {
+                currentStep = 2;
+                document.getElementById('trollQuestion').innerHTML = "Cơ hội cuối cùng để quay đầu:<br>Có hối hận không đó hả Ngọc? 😈";
+                yesButtonScale = 1;
+                document.getElementById('btnYes').style.transform = `scale(${yesButtonScale})`;
+            } else if (currentStep === 2) {
+                document.getElementById('trollModal').style.display = 'none';
+                startFakeHackEffect(); // Chạy màn hình hack giả lập trước khi nổ thiệp
+            }
+        }
+
+        function handleNoClick() {
+            if (currentStep === 1) {
+                alert("Ấn lộn đúng không? Không có quyền từ chối ở đây! Bấm CÓ mau lên! 🤨");
+            } else if (currentStep === 2) {
+                yesButtonScale += 0.5;
+                document.getElementById('btnYes').style.transform = `scale(${yesButtonScale})`;
+                const trollTexts = [
+                    "Ủa tính bấm KHÔNG tới sáng hay gì? Bấm CÓ đi! 😂",
+                    "Nút CÓ sắp nuốt chửng cái điện thoại/máy tính luôn rồi kìa!",
+                    "Ngoan cố vô ích! Hệ thống đã khóa nút KHÔNG, chỉ được bấm CÓ! 🤫",
+                    "Đã bảo là không thoát được đâuu!! BẤM CÓ ĐIIII!! 💥"
+                ];
+                document.getElementById('trollQuestion').innerHTML = trollTexts[Math.floor(Math.random() * trollTexts.length)];
+            }
+        }
+
+        // TÍNH NĂNG MỚI: MÀN HÌNH HACK GIẢ LẬP ĐAU TIM
+        function startFakeHackEffect() {
+            const hackScreen = document.getElementById('hackScreen');
+            const hackProgress = document.getElementById('hackProgress');
+            hackScreen.style.display = 'flex';
+
+            let count = 0;
+            const interval = setInterval(() => {
+                count += Math.floor(Math.random() * 15) + 5;
+                if (count > 99) count = 99;
+                
+                hackProgress.innerHTML = `
+                    [HỆ THỐNG] ĐANG TRUY CẬP THIẾT BỊ...<br>
+                    ĐÃ PHÁT HIỆN TOKEN TÀI KHOẢN CỦA NGỌC...<br>
+                    <span style="color:red; font-weight:bold;">ĐANG TIẾN HÀNH RÚT HẾT TIỀN TRONG THẺ: ${count}%...</span><br>
+                    [WARNING] KHÔNG ĐƯỢC THOÁT TRÌNH DUYỆT!
+                `;
+
+                if (count >= 99) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        hackScreen.style.display = 'none'; // Tắt màn hình hack
+                        triggerExplosion(); // Mở thiệp sinh nhật thật
+                    }, 800);
+                }
+            }, 250);
+        }
+
+        // TÍNH NĂNG MỚI: BÁO CÁO VÔ TRI
+        function triggerReportTroll() {
+            alert("❌ BÁO CÁO THẤT BẠI!\n\nHệ thống AI nhận diện người gửi báo cáo quá mức dễ thương và xinh đẹp, trang web hoàn toàn hợp pháp. Vui lòng không nhấn bừa! 😂");
+        }
+
+        // TƯƠNG TÁC 2: CLICK THỔI NẾN TRÊN BÁNH KEM
+        function blowCandle(candleElement, event) {
+            event.stopPropagation(); 
+            if (candleElement.classList.contains('blown')) return;
+
+            candleElement.classList.add('blown');
+            const rect = candleElement.getBoundingClientRect();
+            const puff = document.createElement('div');
+            puff.className = 'click-burst'; puff.innerText = '💨';
+            puff.style.left = `${rect.left + rect.width/2}px`; puff.style.top = `${rect.top}px`;
+            puff.style.setProperty('--cx', '0px'); puff.style.setProperty('--cy', '-40px'); puff.style.setProperty('--rot', '0deg');
+            document.body.appendChild(puff);
+            setTimeout(() => puff.remove(), 800);
+
+            blownCandlesCount++;
+            if (blownCandlesCount === 3) {
+                canSliceCake = true;
+                document.getElementById('cakeTips').innerHTML = "✨ NẾN ĐÃ TẮT! GIỜ THÌ VUỐT MẠNH QUA CHIẾC BÁNH ĐỂ CẮT NÈ NÀNG ✨";
+                document.getElementById('cakeTips').style.color = "#00e676";
+            }
+        }
+
+        function triggerExplosion() {
+            document.body.classList.add('screen-shake');
+            document.getElementById('boxSection').style.display = 'none';
+            document.getElementById('frameSection').style.display = 'block';
+
+            const video = document.getElementById('giftVideo');
+            video.muted = false; 
+            video.play().catch(error => console.log("Lỗi tự động phát: ", error));
+
+            interactiveSparksEnabled = true; 
+            startFloatingSystem();
+            initCakeCuttingGame();
+            initMouseAndClickEffects(); 
+        }
+
+        function openLetterModal() {
+            document.getElementById('letterModal').style.display = 'flex';
+            document.getElementById('typedWish').innerHTML = "";
+            let i = 0;
+            function type() {
+                if (i < pureWishText.length) {
+                    document.getElementById('typedWish').innerHTML += pureWishText.charAt(i);
+                    i++;
+                    setTimeout(type, 25);
+                }
+            }
+            type();
+        }
+
+        function closeLetter() { document.getElementById('letterModal').style.display = 'none'; }
+
+        function startFloatingSystem() {
+            const itemsPool = ['🎈', '🎂', '🎉', '🎁', '✨', '🧁', '🫧', '💵', '🤣', '👻'];
+            setInterval(() => {
+                const item = document.createElement('div');
+                item.className = 'floating-item';
+                item.innerText = itemsPool[Math.floor(Math.random() * itemsPool.length)];
+                item.style.left = Math.random() * 100 + 'vw';
+                
+                const scale = Math.random() * 0.5 + 0.7; 
+                const swayX = (Math.random() * 160 - 80) + 'px'; 
+                const duration = (Math.random() * 2.5 + 3.5) + 's'; 
+
+                item.style.setProperty('--scale', scale);
+                item.style.setProperty('--sway-x', swayX);
+                item.style.animationDuration = duration;
+
+                if(item.innerText === '🫧') { item.style.opacity = '0.3'; item.style.fontSize = '30px'; } 
+                else { item.style.fontSize = '26px'; }
+                document.body.appendChild(item);
+                setTimeout(() => { item.remove(); }, 5000);
+            }, 300); 
+        }
+
+        function initMouseAndClickEffects() {
+            const sparks = ['✨', '🌸', '💫', '🎈'];
+            const burstIcons = ['❤️', '✨', '💖', '🎉', '🤣', '👻', '🔥'];
+
+            window.addEventListener('click', (e) => {
+                if (!interactiveSparksEnabled) return;
+                if (e.target.classList.contains('troll-btn') || e.target.classList.contains('close-letter-btn') || e.target.classList.contains('report-btn') || e.target.id === 'quizWrongBtn') return;
+
+                for (let i = 0; i < 6; i++) {
+                    const burst = document.createElement('div');
+                    burst.className = 'click-burst';
+                    burst.innerText = burstIcons[Math.floor(Math.random() * burstIcons.length)];
+                    burst.style.left = `${e.clientX}px`; burst.style.top = `${e.clientY}px`;
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const radius = Math.random() * 60 + 40;
+                    const cx = Math.cos(angle) * radius + 'px';
+                    const cy = Math.sin(angle) * radius + 'px';
+                    const rot = (Math.random() * 180 - 90) + 'deg';
+
+                    burst.style.setProperty('--cx', cx); burst.style.setProperty('--cy', cy); burst.style.setProperty('--rot', rot);
+
+                    document.body.appendChild(burst);
+                    setTimeout(() => burst.remove(), 800);
+                }
+            });
+
+            function createSpark(clientX, clientY) {
+                if (!interactiveSparksEnabled) return;
+                const spark = document.createElement('div');
+                spark.className = 'mouse-spark';
+                spark.innerText = sparks[Math.floor(Math.random() * sparks.length)];
+                spark.style.left = `${clientX}px`; spark.style.top = `${clientY}px`;
+
+                const moveX = (Math.random() * 50 - 25) + 'px';
+                const moveY = (Math.random() * 50 - 25) + 'px';
+                spark.style.setProperty('--mx', moveX); spark.style.setProperty('--my', moveY);
+
+                document.body.appendChild(spark);
+                setTimeout(() => { spark.remove(); }, 800);
+            }
+            window.addEventListener('mousemove', (e) => createSpark(e.clientX, e.clientY));
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) createSpark(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: true });
+        }
+
+        function initCakeCuttingGame() {
+            const gameZone = document.getElementById('gameZone');
+            const cakeWrapper = document.getElementById('cakeWrapper');
+            const laser = document.getElementById('laser');
+            const cakeTips = document.getElementById('cakeTips');
+            const flashScreen = document.getElementById('flashScreen');
+            const envelopeBox = document.getElementById('envelopeBox');
+            
+            let isDragging = false;
+            let startX = 0, startY = 0;
+            let cakeCut = false;
+
+            function getCoords(e) {
+                const rect = gameZone.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return { x: clientX - rect.left, y: clientY - rect.top };
+            }
+
+            function onStart(e) {
+                if (cakeCut || !canSliceCake) return; 
+                isDragging = true;
+                const coords = getCoords(e);
+                startX = coords.x; startY = coords.y;
+                laser.style.left = `${startX}px`; laser.style.top = `${startY}px`;
+                laser.style.width = '0px'; laser.style.opacity = '1';
+            }
+
+            function onMove(e) {
+                if (!isDragging || cakeCut || !canSliceCake) return;
+                const coords = getCoords(e);
+                const currentX = coords.x; const currentY = coords.y;
+                const dx = currentX - startX; const dy = currentY - startY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+                laser.style.width = `${distance}px`;
+                laser.style.transform = `rotate(${angle}deg)`;
+
+                if (distance > 90) { triggerSlice(); }
+            }
+
+            function onEnd() { isDragging = false; if (!cakeCut) laser.style.opacity = '0'; }
+
+            function triggerSlice() {
+                cakeCut = true; isDragging = false;
+                flashScreen.classList.add('flash-active');
+                cakeWrapper.classList.add('is-cut');
+                cakeTips.style.display = 'none';
+                document.getElementById('candlesZone').style.display = 'none';
+
+                setTimeout(() => { envelopeBox.classList.add('show'); }, 500);
+                laser.style.boxShadow = "0 0 25px #ff5722, 0 0 40px #ffcc00";
+                setTimeout(() => { laser.style.opacity = '0'; }, 300);
+                explodeCakeCrumbs();
+            }
+
+            function explodeCakeCrumbs() {
+                const crumbs = ['🍰', '🍓', '✨', '🧁', '🎉', '🤣'];
+                const zoneRect = gameZone.getBoundingClientRect();
+                const centerX = zoneRect.width / 2; const centerY = zoneRect.height / 2;
+
+                for (let i = 0; i < 40; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'crumb-particle';
+                    p.innerText = crumbs[Math.floor(Math.random() * crumbs.length)];
+                    p.style.setProperty('--sx', `${centerX}px`); p.style.setProperty('--sy', `${centerY}px`);
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 200 + 80;
+                    const ex = centerX + Math.cos(angle) * speed - centerX;
+                    const ey = centerY + Math.sin(angle) * speed - centerY;
+
+                    p.style.setProperty('--ex', `${ex}px`); p.style.setProperty('--ey', `${ey}px`);
+                    gameZone.appendChild(p);
+                    setTimeout(() => { p.remove(); }, 1200);
+                }
+            }
+
+            gameZone.addEventListener('mousedown', onStart);
+            gameZone.addEventListener('mousemove', onMove);
+            window.addEventListener('mouseup', onEnd);
+            gameZone.addEventListener('touchstart', onStart, { passive: true });
+            gameZone.addEventListener('touchmove', onMove, { passive: true });
+            window.addEventListener('touchend', onEnd);
+        }
+    </script>
+</body>
+</html>
